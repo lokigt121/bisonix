@@ -4,20 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Portfolio</title>
-        <link rel="stylesheet" href="./dist/fonts/petrov-sans-trial/stylesheet.css">
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0./dist/css/select2.min.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0./dist/js/select2.min.js"></script>
+        <link rel="stylesheet" href="/dist/fonts/petrov-sans-trial/stylesheet.css">
+        
+        <script defer="defer" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+       
         <meta name="robots" content="noindex, nofollow">
-    <script defer="defer" src="./dist/js/app.js"></script><link href="dist/css/main.css" rel="stylesheet"></head>
+<link rel="preload" as="image" href="/dist/images/front-page-bg.webp">
+<link rel="preload" as="image" href="/dist/images/front-page-bg-mobile.webp">
+<link rel="preload" as="image" href="/dist/images/portfolio-bg-mobile.webp">
+<link rel="preload" as="image" href="/dist/images/portfolio-bg-desktop.webp">
+<link rel="preload" as="image" href="/dist/images/top-block-bg-alt-mobile.webp">
+    <script defer="defer" src="/dist/js/app.js"></script><link href="dist/css/main.css" rel="stylesheet"></head>
     <body>
         <header class="header header-black">
     <div class="header__container container">
         <a href="#" class="header__logo header__logo-white">
-            <img src="./dist/images/logo/logo-dark.png" alt="logo">
+            <img loading="lazy" src="/dist/images/logo/logo-dark.png" alt="logo">
         </a>
         <a href="#" class="header__logo header__logo-black">
-            <img src="./dist/images/logo/logo-light.png" alt="logo">
+            <img loading="lazy" src="/dist/images/logo/logo-light.png" alt="logo">
         </a>
         <div class="header__menu-wrap">
             <ul class="header__menu">
@@ -219,8 +224,8 @@
                     <div class="portfolio__grid">
                         <a href="#" class="portfolio__item">
                             <div class="item__image">
-                                <img src="./dist/images/cases/casino-bg.png" alt="">
-                                <img src="./dist/images/cases/casino-logo.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/casino-bg.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/casino-logo.png" alt="">
                             </div>
                             <div class="item__info">
                                 <h2 class="item__title h4">Онлайн-казино</h2>
@@ -239,8 +244,8 @@
                         </a>
                         <a href="#" class="portfolio__item">
                             <div class="item__image">
-                                <img src="./dist/images/cases/ostapilet-bg.png" alt="">
-                                <img src="./dist/images/cases/ostapilet-logo.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/ostapilet-bg.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/ostapilet-logo.png" alt="">
                             </div>
                             <div class="item__info">
                                 <h2 class="item__title h4">Ostapilet</h2>
@@ -259,8 +264,8 @@
                         </a>
                         <a href="#" class="portfolio__item">
                             <div class="item__image">
-                                <img src="./dist/images/cases/bison-bg.png" alt="">
-                                <img src="./dist/images/cases/bison-logo.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/bison-bg.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/bison-logo.png" alt="">
                             </div>
                             <div class="item__info">
                                 <h2 class="item__title h4">Спортсбук Bison</h2>
@@ -279,8 +284,8 @@
                         </a>
                         <a href="#" class="portfolio__item">
                             <div class="item__image">
-                                <img src="./dist/images/cases/finbet-bg.png" alt="">
-                                <img src="./dist/images/cases/finbet-logo.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/finbet-bg.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/finbet-logo.png" alt="">
                             </div>
                             <div class="item__info">
                                 <h2 class="item__title h4">Finbet</h2>
@@ -300,8 +305,8 @@
                         </a>
                         <a href="#" class="portfolio__item">
                             <div class="item__image">
-                                <img src="./dist/images/cases/sportbet-bg.png" alt="">
-                                <img src="./dist/images/cases/sportbet-logo.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/sportbet-bg.png" alt="">
+                                <img loading="lazy" src="/dist/images/cases/sportbet-logo.png" alt="">
                             </div>
                             <div class="item__info">
                                 <h2 class="item__title h4">Букмекерская компания</h2>
@@ -350,10 +355,10 @@
         </div>
         <div class="request__column">
             <p class="request__subtitle h3">Давайте обсудим ваш проект</p>
-            <form action="" class="request__form">
-                <input name="name" placeholder="Имя*" required="">
-                <input name="tel" type="tel" placeholder="Номер телефона">
-                <input name="email" type="email" placeholder=" E-mail*" required="">
+            <form action="" class="request__form" novalidate="">
+                <label for="form-name"><input id="form-name" name="name" placeholder="Имя*" required=""></label>
+                <label for="form-tel"><input id="form-tel" name="tel" type="tel" placeholder="Номер телефона"></label>
+                <label for="form-email"><input id="form-email" name="email" type="email" placeholder="E-mail*" required=""></label>
                 <textarea name="comments" id="comments" rows="1" placeholder="Расскажите о вашем проекте"></textarea>
                 <div class="form__bottom">
                     <p>Отправляя эту форму, я подтверждаю, что прочитал и принимаю <a href="#">Политику конфиденциальности</a>.</p>
@@ -363,6 +368,7 @@
         </div>
     </div>
 </div>
+
             <div class="devider">
                 <div class="container">
                     <hr>
@@ -434,7 +440,7 @@
     <div class="footer__row">
         <div class="container">
             <div class="footer__logo">
-                <img src="./dist/images/logo/logo-light.png" alt="">
+                <img loading="lazy" src="/dist/images/logo/logo-light.png" alt="">
             </div>
             <div class="footer__copyrights">Все права защищены, ООО БИЗОНИКС, 2024</div>
         </div>
@@ -444,16 +450,16 @@
         <div class="request__popup popup">
     <div class="popup__container">
         <p class="request__subtitle h3">Давайте обсудим ваш проект</p>
-        <form action="" class="request__form">
+        <form action="" class="request__form" novalidate="">
             <div class="form__close">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4697 14.4697C14.7626 14.1768 15.2374 14.1768 15.5303 14.4697L33.5303 32.4697C33.8232 32.7626 33.8232 33.2374 33.5303 33.5303C33.2374 33.8232 32.7626 33.8232 32.4697 33.5303L14.4697 15.5303C14.1768 15.2374 14.1768 14.7626 14.4697 14.4697Z" fill="#E3E4E6"></path>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M33.5303 14.4697C33.2374 14.1768 32.7626 14.1768 32.4697 14.4697L14.4697 32.4697C14.1768 32.7626 14.1768 33.2374 14.4697 33.5303C14.7626 33.8232 15.2374 33.8232 15.5303 33.5303L33.5303 15.5303C33.8232 15.2374 33.8232 14.7626 33.5303 14.4697Z" fill="#E3E4E6"></path>
                 </svg>
             </div>
-            <input name="name" placeholder="Имя*" required="">
-            <input name="tel" type="tel" placeholder="Номер телефона">
-            <input name="email" type="email" placeholder=" E-mail*" required="">
+            <label for="name"><input id="name" name="name" placeholder="Имя*" required=""></label>
+            <label for="tel"><input id="tel" name="tel" type="tel" placeholder="Номер телефона"></label>
+            <label for="email"><input id="email" name="email" type="email" placeholder="E-mail*" required=""></label>
             <textarea name="comments" id="comments" rows="1" placeholder="Расскажите о вашем проекте"></textarea>
             <div class="form__bottom">
                 <p>Отправляя эту форму, я подтверждаю, что прочитал и принимаю <a href="#">Политику конфиденциальности</a>.</p>
@@ -490,8 +496,8 @@
         <svg width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="53" cy="53" r="51" stroke="#F05C4B" stroke-width="3"></circle>
             <path d="M35.5 35.5L53 53M70.5 70.5L53 53M53 53L35.5 70.5M53 53L70.5 35.5" stroke="#F05C4B" stroke-width="3"></path>
-            </svg>
-            
+        </svg>
+
         <p class="h2 form-message">Ваша заявка не отправлена</p>
         <p>Попробуйте еще раз</p>
         <div class="btn btn--primary form__close request__toggle">Оставить заявку</div>

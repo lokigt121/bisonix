@@ -20,47 +20,193 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 $(document).ready(function () {
-  var _this = this;
+  var _this5 = this;
   var mobileMenuBtn = $('.header__toggle');
   var header = $('.header');
+  var customSimpleDetails = $('.our-services__list details, .faq details');
+  var customTabletSimpleDetails = $('.service-block details, .our-services-block details');
+  var customAdvantagesDetails = $('.advantages details');
+  var customBenefitsDetails = $('.benefits details');
+  var customLiDetails = $('.dev-process details');
+  var scrollHeight = $(window).scrollTop();
+  var Accordion = /*#__PURE__*/function () {
+    function Accordion(el) {
+      var _this = this;
+      _classCallCheck(this, Accordion);
+      // сохраняем details
+      this.el = el;
+      // сохраняем summary
+      this.summary = el.querySelector('summary');
+      // сохраняем div с классом "content"
+      this.content = el.querySelector('.content');
 
-  //Открываем/закрываем мобильное меню при клике на значок в хедере
+      // сохраняем объект анимации (для ее отмены при необходимости)
+      this.animation = null;
+      // находится ли элемент в процессе закрытия?
+      this.isClosing = false;
+      // находится ли элемент в процессе раскрытия?
+      this.isExpanding = false;
+      // определяем клик по summary
+      this.summary.addEventListener('click', function (e) {
+        return _this.onClick(e);
+      });
+    }
+    return _createClass(Accordion, [{
+      key: "onClick",
+      value: function onClick(e) {
+        // отменяем стандартное поведение браузера
+        e.preventDefault();
+        // добавляем к details свойство "overflow" со значением "hidden" во избежание переполнения контента
+        this.el.style.overflow = 'hidden';
+        // проверяем, находится ли элемент в процессе закрытия или уже закрыт
+        if (this.isClosing || !this.el.open) {
+          this.open();
+          // проверяем, находится ли элемент в процессе открытия или уже открыт
+        } else if (this.isExpanding || this.el.open) {
+          this.shrink();
+        }
+      }
 
+      // функция, вызываемая для анимированного скрытия контента
+    }, {
+      key: "shrink",
+      value: function shrink() {
+        var _this2 = this;
+        // фиксируем начало закрытия элемента
+        this.isClosing = true;
+
+        // сохраняем текущую высоту элемента
+        var startHeight = "".concat(this.el.offsetHeight, "px");
+        // рассчитываем высоту summary
+        var endHeight = "".concat(this.summary.offsetHeight, "px");
+
+        // если анимация уже запущена
+        if (this.animation) {
+          // отменяем ее
+          this.animation.cancel();
+        }
+
+        // запускаем WAAPI анимацию
+        this.animation = this.el.animate({
+          // устанавливаем ключевые кадры
+          height: [startHeight, endHeight]
+        }, {
+          // если анимация кажется вам слишком быстрой или слишком медленной, то вы можете изменить значение данного свойства (duration - продолжительность)
+          duration: 400,
+          // вы также можете изменить значение этого свойства (easing (animation-timing-function) - временная функция)
+          easing: 'ease-out'
+        });
+
+        // после завершения анимации вызываем onAnimationFinish()
+        this.animation.onfinish = function () {
+          return _this2.onAnimationFinish(false);
+        };
+        // если анимация отменена, присваиваем переменной "isClosing" значение "false"
+        this.animation.oncancel = function () {
+          return _this2.isClosing = false;
+        };
+      }
+
+      // функция, вызываемая для раскрытия элемента после клика
+    }, {
+      key: "open",
+      value: function open() {
+        var _this3 = this;
+        // устанавливаем элементу фиксированную высоту
+        this.el.style.height = "".concat(this.el.offsetHeight, "px");
+        // добавляем details атрибут "open"
+        this.el.open = true;
+        // ожидаем следующего кадра для вызова функции "expand"
+        requestAnimationFrame(function () {
+          return _this3.expand();
+        });
+      }
+
+      // функция, вызываемая для анимированного показа контента
+    }, {
+      key: "expand",
+      value: function expand() {
+        var _this4 = this;
+        // фиксируем начало раскрытия элемента
+        this.isExpanding = true;
+        // получаем фиксированную высоту элемента
+        var startHeight = "".concat(this.el.offsetHeight, "px");
+        // рассчитываем высоту открытого элемента (высота summary + высота содержимого)
+        var endHeight = "".concat(this.summary.offsetHeight + this.content.offsetHeight, "px");
+
+        // если анимация уже запущена
+        if (this.animation) {
+          // отменяем ее
+          this.animation.cancel();
+        }
+
+        // запускаем WAAPI анимацию
+        this.animation = this.el.animate({
+          height: [startHeight, endHeight]
+        }, {
+          duration: 400,
+          easing: 'ease-out'
+        });
+        this.animation.onfinish = function () {
+          return _this4.onAnimationFinish(true);
+        };
+        this.animation.oncancel = function () {
+          return _this4.isClosing = false;
+        };
+      }
+
+      // коллбэк, вызываемый после завершения shrink или expand
+    }, {
+      key: "onAnimationFinish",
+      value: function onAnimationFinish(open) {
+        // устанавливаем значение атрибута "open"
+        this.el.open = open;
+        // удаляем переменную, хранящую анимацию
+        this.animation = null;
+        // сбрасываем значения
+        this.isClosing = false;
+        this.isExpanding = false;
+        // удаляем overflow и фиксированную высоту
+        this.el.style.height = this.el.style.overflow = '';
+      }
+    }]);
+  }(); //Открываем/закрываем мобильное меню при клике на значок в хедере
   mobileMenuBtn.on('click', function () {
     $(this).toggleClass('active');
     header.toggleClass('mobile-menu-active');
     $('body').toggleClass('mobile-menu-active');
   });
-  $(window).bind('resize load', function () {
-    if (document.documentElement.clientWidth < 992) {
-      var casesSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.cases__slider ', {
-        loop: false,
-        grabCursor: true,
-        simulateTouch: true,
-        pagination: {
-          el: '.cases__slider .swiper-pagination',
-          clickable: true,
-          type: 'bullets'
+  if (document.documentElement.clientWidth < 992) {
+    var casesSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.cases__slider ', {
+      loop: false,
+      grabCursor: true,
+      simulateTouch: true,
+      pagination: {
+        el: '.cases__slider .swiper-pagination',
+        clickable: true,
+        type: 'bullets'
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.05,
+          spaceBetween: 16
         },
-        breakpoints: {
-          0: {
-            slidesPerView: 1.05,
-            spaceBetween: 16
-          },
-          768: {
-            slidesPerView: 1.6,
-            spaceBetween: 24
-          }
-        },
-        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation]
-      });
-      $('.header__menu > li').on('click', function () {
-        $(this).toggleClass('active');
-      });
-      $('.sub-menu .container > li').on('click', function (e) {
-        $(this).toggleClass('active');
-        e.stopPropagation();
-      });
+        768: {
+          slidesPerView: 1.6,
+          spaceBetween: 24
+        }
+      },
+      modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation]
+    });
+    $('.header__menu > li').on('click', function (e) {
+      $(this).toggleClass('active');
+      e.stopPropagation();
+    });
+    $('.sub-menu .container > li').on('click', function (e) {
+      $(this).toggleClass('active');
+      e.stopPropagation();
+    });
+    if (customTabletSimpleDetails.length) {
       customTabletSimpleDetails.each(function () {
         var accordion = new Accordion(this);
         $(this).siblings().on('click', function () {
@@ -68,27 +214,29 @@ $(document).ready(function () {
           accordion.onAnimationFinish('');
         });
       });
-    } else {
-      $('.our-services-block details').attr('open', true);
-      $('.our-services-block details').on('click', function (e) {
-        e.preventDefault();
-      });
-      $('.service-block details').attr('open', true);
-      $('.service-block details').on('click', function (e) {
-        e.preventDefault();
-      });
     }
-    if (document.documentElement.clientWidth > 767) {
-      $('.dev-process details').attr('open', true);
-      $('.dev-process details').on('click', function (e) {
-        e.preventDefault();
-      });
-      $('.advantages details').attr('open', true);
-      $('.advantages details').on('click', function (e) {
-        e.preventDefault();
-      });
-    }
-    if (document.documentElement.clientWidth < 768) {
+  } else {
+    $('.our-services-block details').attr('open', true);
+    $('.our-services-block details').on('click', function (e) {
+      e.preventDefault();
+    });
+    $('.service-block details').attr('open', true);
+    $('.service-block details').on('click', function (e) {
+      e.preventDefault();
+    });
+  }
+  if (document.documentElement.clientWidth > 767) {
+    $('.dev-process details').attr('open', true);
+    $('.dev-process details').on('click', function (e) {
+      e.preventDefault();
+    });
+    $('.advantages details').attr('open', true);
+    $('.advantages details').on('click', function (e) {
+      e.preventDefault();
+    });
+  }
+  if (document.documentElement.clientWidth < 768) {
+    if (customLiDetails.length) {
       customLiDetails.each(function () {
         var accordion = new Accordion(this);
         $(this).parent().siblings().find('details').on('click', function () {
@@ -96,13 +244,61 @@ $(document).ready(function () {
           accordion.onAnimationFinish('');
         });
       });
+    }
+    if (customAdvantagesDetails.length) {
       customAdvantagesDetails.each(function () {
         $(this).on('click', function () {
           $(this).siblings().attr('open', false);
         });
       });
     }
-  });
+    var reviewsSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.reviews__slider', {
+      loop: false,
+      grabCursor: true,
+      simulateTouch: true,
+      slidesPerView: 1.1,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: '.reviews__slider .swiper-button-next',
+        prevEl: '.reviews__slider .swiper-button-prev'
+      },
+      modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation]
+    });
+  }
+  if ($('.views__slider').length) {
+    var reviewsBlockSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.views__slider', {
+      direction: 'horizontal',
+      loop: false,
+      slidesPerView: 'auto',
+      grabCursor: true,
+      simulateTouch: true,
+      pagination: {
+        el: '.views__slider .swiper-pagination',
+        clickable: true,
+        type: 'bullets'
+      },
+      centeredSlides: true,
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 133,
+        depth: 200,
+        modifier: 1,
+        scale: 0.95,
+        slideShadows: 0
+      },
+      breakpoints: {
+        0: {
+          spaceBetween: 24
+        },
+        992: {
+          spaceBetween: 450
+        }
+      },
+      modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectCoverflow]
+    });
+  }
+
   //Scroll to top btn
   var backToTop = document.getElementById('scroll-to-top__btn');
   if (backToTop) {
@@ -147,18 +343,11 @@ $(document).ready(function () {
       $('.request-error__popup').removeClass('active');
     }
   });
-  var inputs = $('input');
-  $.each(inputs, function () {
-    $(this).focusout(function () {
-      if ($(this).val() !== '') $(this).addClass('not-empty');else $(this).removeClass('not-empty');
-    });
-  });
   $('.parallax').on('mousemove', function (par) {
     var x = par.pageX / $(window).width();
     var y = par.pageY / $(window).height();
-    $(_this).find('.parallax__image').css('transform', 'translate(' + x + 'vh, ' + y + 'vh)');
+    $(_this5).find('.parallax__image').css('transform', 'translate(' + x + 'vh, ' + y + 'vh)');
   });
-  var scrollHeight = $(window).scrollTop();
   if (scrollHeight > 0) {
     $('header').addClass('active');
   }
@@ -170,164 +359,46 @@ $(document).ready(function () {
       $('header').removeClass('active');
     }
   });
-  var Accordion = /*#__PURE__*/function () {
-    function Accordion(el) {
-      var _this2 = this;
-      _classCallCheck(this, Accordion);
-      // сохраняем details
-      this.el = el;
-      // сохраняем summary
-      this.summary = el.querySelector('summary');
-      // сохраняем div с классом "content"
-      this.content = el.querySelector('.content');
-
-      // сохраняем объект анимации (для ее отмены при необходимости)
-      this.animation = null;
-      // находится ли элемент в процессе закрытия?
-      this.isClosing = false;
-      // находится ли элемент в процессе раскрытия?
-      this.isExpanding = false;
-      // определяем клик по summary
-      this.summary.addEventListener('click', function (e) {
-        return _this2.onClick(e);
+  if (customBenefitsDetails.height) {
+    customBenefitsDetails.each(function () {
+      $(this).on('click', function () {
+        $(this).siblings().attr('open', false);
       });
+    });
+  }
+  if (customSimpleDetails.height) {
+    customSimpleDetails.each(function () {
+      var accordion = new Accordion(this);
+      $(this).siblings().on('click', function () {
+        accordion.shrink();
+        accordion.onAnimationFinish('');
+      });
+    });
+  }
+  $('.request__form').on('submit', function (e) {
+    var inputName = $(this).find('[name="name"]');
+    var inputEmail = $(this).find('[name="email"]');
+    if (inputName.val() == '') {
+      if (inputName.siblings('span').length) {
+        return;
+      } else {
+        inputName.parent().append('<span class="form__error">Пожалуйста, заполните это поле</span>');
+      }
     }
-    return _createClass(Accordion, [{
-      key: "onClick",
-      value: function onClick(e) {
-        // отменяем стандартное поведение браузера
-        e.preventDefault();
-        // добавляем к details свойство "overflow" со значением "hidden" во избежание переполнения контента
-        this.el.style.overflow = 'hidden';
-        // проверяем, находится ли элемент в процессе закрытия или уже закрыт
-        if (this.isClosing || !this.el.open) {
-          this.open();
-          // проверяем, находится ли элемент в процессе открытия или уже открыт
-        } else if (this.isExpanding || this.el.open) {
-          this.shrink();
-        }
+    if (inputEmail.val() == '') {
+      if (inputEmail.siblings('span').length) {
+        return;
+      } else {
+        inputEmail.parent().append('<span class="form__error">Пожалуйста, заполните это поле</span>');
       }
-
-      // функция, вызываемая для анимированного скрытия контента
-    }, {
-      key: "shrink",
-      value: function shrink() {
-        var _this3 = this;
-        // фиксируем начало закрытия элемента
-        this.isClosing = true;
-
-        // сохраняем текущую высоту элемента
-        var startHeight = "".concat(this.el.offsetHeight, "px");
-        // рассчитываем высоту summary
-        var endHeight = "".concat(this.summary.offsetHeight, "px");
-
-        // если анимация уже запущена
-        if (this.animation) {
-          // отменяем ее
-          this.animation.cancel();
-        }
-
-        // запускаем WAAPI анимацию
-        this.animation = this.el.animate({
-          // устанавливаем ключевые кадры
-          height: [startHeight, endHeight]
-        }, {
-          // если анимация кажется вам слишком быстрой или слишком медленной, то вы можете изменить значение данного свойства (duration - продолжительность)
-          duration: 400,
-          // вы также можете изменить значение этого свойства (easing (animation-timing-function) - временная функция)
-          easing: 'ease-out'
-        });
-
-        // после завершения анимации вызываем onAnimationFinish()
-        this.animation.onfinish = function () {
-          return _this3.onAnimationFinish(false);
-        };
-        // если анимация отменена, присваиваем переменной "isClosing" значение "false"
-        this.animation.oncancel = function () {
-          return _this3.isClosing = false;
-        };
-      }
-
-      // функция, вызываемая для раскрытия элемента после клика
-    }, {
-      key: "open",
-      value: function open() {
-        var _this4 = this;
-        // устанавливаем элементу фиксированную высоту
-        this.el.style.height = "".concat(this.el.offsetHeight, "px");
-        // добавляем details атрибут "open"
-        this.el.open = true;
-        // ожидаем следующего кадра для вызова функции "expand"
-        requestAnimationFrame(function () {
-          return _this4.expand();
-        });
-      }
-
-      // функция, вызываемая для анимированного показа контента
-    }, {
-      key: "expand",
-      value: function expand() {
-        var _this5 = this;
-        // фиксируем начало раскрытия элемента
-        this.isExpanding = true;
-        // получаем фиксированную высоту элемента
-        var startHeight = "".concat(this.el.offsetHeight, "px");
-        // рассчитываем высоту открытого элемента (высота summary + высота содержимого)
-        var endHeight = "".concat(this.summary.offsetHeight + this.content.offsetHeight, "px");
-
-        // если анимация уже запущена
-        if (this.animation) {
-          // отменяем ее
-          this.animation.cancel();
-        }
-
-        // запускаем WAAPI анимацию
-        this.animation = this.el.animate({
-          height: [startHeight, endHeight]
-        }, {
-          duration: 400,
-          easing: 'ease-out'
-        });
-        this.animation.onfinish = function () {
-          return _this5.onAnimationFinish(true);
-        };
-        this.animation.oncancel = function () {
-          return _this5.isClosing = false;
-        };
-      }
-
-      // коллбэк, вызываемый после завершения shrink или expand
-    }, {
-      key: "onAnimationFinish",
-      value: function onAnimationFinish(open) {
-        // устанавливаем значение атрибута "open"
-        this.el.open = open;
-        // удаляем переменную, хранящую анимацию
-        this.animation = null;
-        // сбрасываем значения
-        this.isClosing = false;
-        this.isExpanding = false;
-        // удаляем overflow и фиксированную высоту
-        this.el.style.height = this.el.style.overflow = '';
-      }
-    }]);
-  }();
-  var customSimpleDetails = $('.our-services__list details, .faq details');
-  var customTabletSimpleDetails = $('.service-block details, .our-services-block details');
-  var customAdvantagesDetails = $('.advantages details');
-  var customBenefitsDetails = $('.benefits details');
-  var customLiDetails = $('.dev-process details');
-  customBenefitsDetails.each(function () {
-    $(this).on('click', function () {
-      $(this).siblings().attr('open', false);
+    }
+    inputName.on('input', function () {
+      $(this).siblings('.form__error').remove();
     });
-  });
-  customSimpleDetails.each(function () {
-    var accordion = new Accordion(this);
-    $(this).siblings().on('click', function () {
-      accordion.shrink();
-      accordion.onAnimationFinish('');
+    inputEmail.on('input', function () {
+      $(this).siblings('.form__error').remove();
     });
+    e.preventDefault();
   });
 });
 
@@ -10413,7 +10484,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"./dist/js/app": 0,
+/******/ 			"/dist/js/app": 0,
 /******/ 			"dist/css/main": 0
 /******/ 		};
 /******/ 		
