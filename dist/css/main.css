@@ -2236,19 +2236,19 @@ main {
   position: relative;
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
+  background: url(./dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .front-page-top {
-    background: url(/dist/images/front-page-bg-tablet.png) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg-tablet.png) bottom right no-repeat;
     background-size: 100%;
   }
 }
 @media (min-width: 992px) {
   .front-page-top {
-    background: url(/dist/images/front-page-bg.webp) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg.webp) bottom right no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -2344,20 +2344,20 @@ main {
 }
 
 .about-company {
-  background: url(/dist/images/front-page-about-company-bg-mobile.png) 3% 100% no-repeat;
+  background: url(./dist/images/front-page-about-company-bg-mobile.png) 3% 100% no-repeat;
   background-size: 86%;
   background-color: var(--FFFFFF);
 }
 @media (min-width: 768px) {
   .about-company {
-    background: url(/dist/images/front-page-about-company-bg-tablet.png) bottom left no-repeat;
+    background: url(./dist/images/front-page-about-company-bg-tablet.png) bottom left no-repeat;
     background-size: 83%;
     background-color: var(--FFFFFF);
   }
 }
 @media (min-width: 992px) {
   .about-company {
-    background: url(/dist/images/front-page-blocks-bg.png) center left no-repeat;
+    background: url(./dist/images/front-page-blocks-bg.png) center left no-repeat;
     background-size: 100%;
     background-color: var(--FFFFFF);
   }
@@ -2405,20 +2405,20 @@ main {
 }
 
 .our-services {
-  background: url(/dist/images/front-page-about-company-bg-mobile.png) 3% 100% no-repeat;
+  background: url(./dist/images/front-page-about-company-bg-mobile.png) 3% 100% no-repeat;
   background-size: 86%;
   background-color: var(--E3E4E6);
 }
 @media (min-width: 768px) {
   .our-services {
-    background: url(/dist/images/front-page-about-company-bg-tablet.png) center left no-repeat;
+    background: url(./dist/images/front-page-about-company-bg-tablet.png) center left no-repeat;
     background-size: 100%;
     background-color: var(--E3E4E6);
   }
 }
 @media (min-width: 992px) {
   .our-services {
-    background: url(/dist/images/front-page-blocks-bg.png) bottom left no-repeat;
+    background: url(./dist/images/front-page-blocks-bg.png) bottom left no-repeat;
     background-size: 100%;
     background-color: var(--E3E4E6);
   }
@@ -3383,21 +3383,21 @@ main {
   }
 }
 .request__column:first-child {
-  background: url("/dist/images/form-bg-mobile.png") left bottom no-repeat;
+  background: url("./dist/images/form-bg-mobile.png") left bottom no-repeat;
   background-size: 100%;
   background-color: var(--262A2E);
   min-height: 300px;
 }
 @media (min-width: 768px) {
   .request__column:first-child {
-    background: url("/dist/images/form-bg-tablet.png") left bottom no-repeat;
+    background: url("./dist/images/form-bg-tablet.png") left bottom no-repeat;
     background-size: 65%;
     background-color: var(--262A2E);
   }
 }
 @media (min-width: 992px) {
   .request__column:first-child {
-    background: url("/dist/images/form-bg.png") left bottom no-repeat;
+    background: url("./dist/images/form-bg.png") left bottom no-repeat;
     background-size: 100%;
     background-color: var(--262A2E);
   }
@@ -3602,19 +3602,19 @@ main {
   position: relative;
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/top-block-bg-alt-mobile.webp) bottom right no-repeat;
+  background: url(./dist/images/top-block-bg-alt-mobile.webp) bottom right no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .services-list-top {
-    background: url(/dist/images/front-page-bg-tablet.png) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg-tablet.png) bottom right no-repeat;
     background-size: 100%;
   }
 }
 @media (min-width: 992px) {
   .services-list-top {
-    background: url(/dist/images/front-page-bg.webp) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg.webp) bottom right no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -3903,19 +3903,19 @@ main {
   position: relative;
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
+  background: url(./dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .service-page-top {
-    background: url(/dist/images/front-page-bg-tablet.png) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg-tablet.png) bottom right no-repeat;
     background-size: 100%;
   }
 }
 @media (min-width: 992px) {
   .service-page-top {
-    background: url(/dist/images/front-page-bg.webp) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg.webp) bottom right no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -4100,7 +4100,7 @@ main {
 }
 @media (min-width: 992px) {
   .service-block {
-    background: url(/dist/images/service-block-bg.png) bottom right no-repeat;
+    background: url(./dist/images/service-block-bg.png) bottom right no-repeat;
     background-size: 50%;
     background-color: var(--E3E4E6);
   }
@@ -4613,20 +4613,20 @@ main {
 .portfolio {
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/portfolio-bg-mobile.webp) top center no-repeat;
+  background: url(./dist/images/portfolio-bg-mobile.webp) top center no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .portfolio {
-    background: url(/dist/images/portfolio-bg-tablet.png) top center no-repeat;
+    background: url(./dist/images/portfolio-bg-tablet.png) top center no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
 }
 @media (min-width: 992px) {
   .portfolio {
-    background: url(/dist/images/portfolio-bg-desktop.webp) top center no-repeat;
+    background: url(./dist/images/portfolio-bg-desktop.webp) top center no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -4833,19 +4833,19 @@ main {
   position: relative;
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/top-block-bg-alt-mobile.webp) bottom right no-repeat;
+  background: url(./dist/images/top-block-bg-alt-mobile.webp) bottom right no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .vacancies-top {
-    background: url(/dist/images/front-page-bg-tablet.png) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg-tablet.png) bottom right no-repeat;
     background-size: 100%;
   }
 }
 @media (min-width: 992px) {
   .vacancies-top {
-    background: url(/dist/images/front-page-bg.webp) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg.webp) bottom right no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -5088,19 +5088,19 @@ main {
   position: relative;
   margin-top: -88px;
   padding-top: 88px;
-  background: url(/dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
+  background: url(./dist/images/front-page-bg-mobile.webp) bottom right no-repeat;
   background-size: 100%;
   background-color: var(--202428);
 }
 @media (min-width: 768px) {
   .about-us-top {
-    background: url(/dist/images/front-page-bg-tablet.png) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg-tablet.png) bottom right no-repeat;
     background-size: 100%;
   }
 }
 @media (min-width: 992px) {
   .about-us-top {
-    background: url(/dist/images/front-page-bg.webp) bottom right no-repeat;
+    background: url(./dist/images/front-page-bg.webp) bottom right no-repeat;
     background-size: 100%;
     background-color: var(--202428);
   }
@@ -5237,7 +5237,7 @@ main {
   flex-direction: column;
 }
 .reviews__slide.swiper-slide::before {
-  content: url("/dist/images/icons/review.svg");
+  content: url("./dist/images/icons/review.svg");
   position: absolute;
   top: 24px;
   left: 24px;
@@ -5408,7 +5408,7 @@ main {
   position: relative;
 }
 .views__slide.swiper-slide::after {
-  content: url("/dist/images/icons/review.svg");
+  content: url("./dist/images/icons/review.svg");
   position: absolute;
   top: 48px;
   right: 0;
