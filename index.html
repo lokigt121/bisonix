@@ -29,12 +29,12 @@
     <div class="popup__container">
         <p class="request__subtitle h3">Давайте обсудим ваш проект</p>
         <form action="" class="request__form" novalidate="">
-            <div class="form__close">
+            <button class="form__close">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4697 14.4697C14.7626 14.1768 15.2374 14.1768 15.5303 14.4697L33.5303 32.4697C33.8232 32.7626 33.8232 33.2374 33.5303 33.5303C33.2374 33.8232 32.7626 33.8232 32.4697 33.5303L14.4697 15.5303C14.1768 15.2374 14.1768 14.7626 14.4697 14.4697Z" fill="#E3E4E6"></path>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M33.5303 14.4697C33.2374 14.1768 32.7626 14.1768 32.4697 14.4697L14.4697 32.4697C14.1768 32.7626 14.1768 33.2374 14.4697 33.5303C14.7626 33.8232 15.2374 33.8232 15.5303 33.5303L33.5303 15.5303C33.8232 15.2374 33.8232 14.7626 33.5303 14.4697Z" fill="#E3E4E6"></path>
                 </svg>
-            </div>
+            </button>
             <label for="name"><input id="name" name="name" placeholder="Имя*" required=""></label>
             <label for="tel"><input id="tel" name="tel" type="tel" placeholder="Номер телефона"></label>
             <label for="email"><input id="email" name="email" type="email" placeholder="E-mail*" required=""></label>
@@ -48,29 +48,29 @@
 </div>
 <div class="request-success__popup popup">
     <div class="popup__container">
-        <div class="form__close">
+        <button class="form__close">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4697 14.4697C14.7626 14.1768 15.2374 14.1768 15.5303 14.4697L33.5303 32.4697C33.8232 32.7626 33.8232 33.2374 33.5303 33.5303C33.2374 33.8232 32.7626 33.8232 32.4697 33.5303L14.4697 15.5303C14.1768 15.2374 14.1768 14.7626 14.4697 14.4697Z" fill="#E3E4E6"></path>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M33.5303 14.4697C33.2374 14.1768 32.7626 14.1768 32.4697 14.4697L14.4697 32.4697C14.1768 32.7626 14.1768 33.2374 14.4697 33.5303C14.7626 33.8232 15.2374 33.8232 15.5303 33.5303L33.5303 15.5303C33.8232 15.2374 33.8232 14.7626 33.5303 14.4697Z" fill="#E3E4E6"></path>
             </svg>
-        </div>
+        </button>
         <svg width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="53" cy="53" r="51" stroke="#0ACF83" stroke-width="3"></circle>
             <path d="M26.5 52.6635L44.3917 70.5L79.5 35.5" stroke="#0ACF83" stroke-width="3" stroke-linecap="round"></path>
         </svg>
         <p class="h2 form-message">Спасибо!</p>
         <p>Ваша заявка успешно отправлена</p>
-        <div class="btn btn--primary form__close">Закрыть окно</div>
+        <button class="btn btn--primary form__close">Закрыть окно</button>
     </div>
 </div>
 <div class="request-error__popup popup">
     <div class="popup__container">
-        <div class="form__close">
+        <button class="form__close">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4697 14.4697C14.7626 14.1768 15.2374 14.1768 15.5303 14.4697L33.5303 32.4697C33.8232 32.7626 33.8232 33.2374 33.5303 33.5303C33.2374 33.8232 32.7626 33.8232 32.4697 33.5303L14.4697 15.5303C14.1768 15.2374 14.1768 14.7626 14.4697 14.4697Z" fill="#E3E4E6"></path>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M33.5303 14.4697C33.2374 14.1768 32.7626 14.1768 32.4697 14.4697L14.4697 32.4697C14.1768 32.7626 14.1768 33.2374 14.4697 33.5303C14.7626 33.8232 15.2374 33.8232 15.5303 33.5303L33.5303 15.5303C33.8232 15.2374 33.8232 14.7626 33.5303 14.4697Z" fill="#E3E4E6"></path>
             </svg>
-        </div>
+        </button>
         <svg width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="53" cy="53" r="51" stroke="#F05C4B" stroke-width="3"></circle>
             <path d="M35.5 35.5L53 53M70.5 70.5L53 53M53 53L35.5 70.5M53 53L70.5 35.5" stroke="#F05C4B" stroke-width="3"></path>
@@ -78,7 +78,7 @@
 
         <p class="h2 form-message">Ваша заявка не отправлена</p>
         <p>Попробуйте еще раз</p>
-        <div class="btn btn--primary form__close request__toggle">Оставить заявку</div>
+        <button class="btn btn--primary form__close request__toggle">Оставить заявку</button>
     </div>
 </div>
 
